@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/1.css">
+</head>
+<body>
+    <li>
+        <!-- 代码块 (注释里面也会识别标签)-->
+        <%=str %>
+        <!-- 关于字符串里面本来就带有标签 是不能用等号的=  需要减号- -->
+        <%-HL %>
+        <!-- 数据循环 -->
+        <% arr.forEach(item=> {%>
+            <li><%=item %></li>
+        <%}) %>
+    </li>
+    <%-include(fter) %>
+</body>
+</html>

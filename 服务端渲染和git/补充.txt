@@ -1,0 +1,207 @@
+/topic/1254165as
+    优点：
+        路由友好一点
+        利于seo（搜索引擎 更喜欢这一种）
+        SPA (单页面应用)
+
+/topic?id=46545asdxas
+    优点：
+        相比而言灵活
+
+例如：/topic/:id/:name/:age 这些都要有
+    /topic/？a=xxx&b=xxx  这些可省略
+
+
+模块化概念
+    所有语言都有模块化系统（除了js）？？？
+    1、前端模块化：分为两种
+        1。传统模块化：requirejs AMD&CMD和 seaJs CMD(官网都没了，很古老的一个东西)
+
+                命名空间--你在命名空间写的变量都不是全局变量（除非导出 不然外面都获取不到）
+                CMD--公共模块定义（同步的  有时候不是件好事、所以官网都没了）
+                AMD--异步模块定义（异步的）
+
+        2。现代模块化
+            比如vue angular react  (天生自带模块化 不用别人支持他)
+
+        模块化的玩法是基于webpack  ===最底层 CMD
+            --意思是：同等体积下 把多个文件 打包为一个文件
+
+
+渲染分两种
+    ---后台渲染
+        优点：1、稳定（渲染肯定跟数据有关）、
+             2、安全（不会导致数据泄露）、
+             3、利于seo（百度喜欢 （是中国最大的搜索引擎头子））
+             4、体积大（页面整个渲染完毕 发送给前台）
+
+    ---前端渲染
+        1、不那么稳定
+        2、体积小（后台只给你数据就可以了）
+        3、不那么安全，没处理好，会泄露数据
+        4、灵活 用户体验好
+            （
+                前台删除一条数据非常简单
+                后台删除需要重新传一次给前台
+            ）
+    后台渲染页面加载速度或更快一些
+        只要你不乱搞 非带来个 30W div 不会有太大的区别
+            可以选择分个页
+    
+    服务端渲染的框架---非常多
+
+    pug 破坏式 -破坏HTML
+        1、写一个html  就代表一个标签
+        2、缩进控制层级
+        3、属性meta(charset="utf-8",多个写逗号)
+        4、多行写.
+           例如 script.
+                    window.onload=()=>{
+                        alert(1 (.代表多行文本));
+                    }
+        5、设置 class id----div.col.size#abc
+
+    ejs 非破坏式 --保留HTML结构
+        <li>
+            <!-- 代码块 (注释里面也会识别标签)-->
+            <%=str %>
+            <!-- 关于字符串里面本来就带有标签 是不能用等号的=  需要减号- -->
+            <%-HL %>
+            <!-- 数据循环 -->
+            <% arr.forEach(item=> {%>
+                <li><%=item %></li>
+            <%}) %>
+        </li>
+        //引外部文件footer.html
+        <%-include(fter) %>
+
+    下载先初始化（多个下载的方式）cnpm i pug ejs -D
+        "ejs": "^2.6.1",
+        "pug": "^2.0.3"
+    
+
+
+/*
+GIT:分布式版本控制系统
+用户名HH-L huan@xin521
+    1、git clone克隆(一共有Use SSH（√）和Use HTTPS)
+        例如：git clone https://github.com/HH-L/huan.git
+        1、.git文件夹（通过git管理这个仓库）
+    2、建一个1.txt文件
+        命令：git status  当前仓库状态 （当前有没有被修改的文件）
+        命令：git add .    再git status 
+*/
+
+git会自动忽略空文件夹
+
+1、git clone 拉取代码
+    git clone https://github.com/FeiSallyLJY/GitTest.git
+
+2.git status 状态追踪（文件的新增，修改、删除）
+    (ls)查看
+
+3.git add 提交到暂存区域（把status进行一个确认 没add之前可以有后悔的机会）
+
+三种提交  方式
+
+	单文件提交 git add ljy.txt
+	多文件提交 git add d.txt s.txt
+	全部提交   git add.
+
+4.错误操作:需要撤回
+
+	git checkout 只能撤回还没有git add (提交到暂存区)的状态
+
+			对于新添加的文件需要加到git file当中
+			然后修改,添加,删除 可以进行撤回
+
+	单文件撤回 git checkout ljy.txt
+	多文件撤回 git checkout d.txt s.txt
+	
+touch g.txt新建
+
+//新建文件夹
+
+git touch image/.gitkeep
+
+
+
+点击方向键 上可以获得上一级的命令
+
+
+5.提交到本地仓库
+
+    git commit -m "(当前版本的有效信息)";
+
+6.查看我们本地仓库的提交版本信息
+
+    git log --pretty=oneline(屏蔽作者和时间信息)
+
+    (HEAD-->master)当前属于哪个版本
+
+ 41165d6a0c782496a0201f3fe0dc70bb2db2d464   (当前版本的ID,经过非对称加密之后的);
+
+7.git reset 回退版本
+		
+git reset --hard HEAD~2
+
+
+8.$ git push -u origin master 
+
+	git -u是第一次上传的时候加 (-u)
+
+ "(上传)"
+
+
+
+
+
+钥匙:ssh-keygen -t rsa -C "m15241160468@163.com”
+
+//git分支
+git remote -v
+创建一个分支
+git checkout -b(创建完毕,并且切换到dev) dev(新的分支名字,随便取)
+
+
+
+合并分支
+
+git merge dev当前处于分支,去合并 dev合并
+
+git  branch(查看本地都有几个分支,当前处于哪一个(*文字为绿色的))
+切换分支
+git checkout dev(具体切换到哪个分支)
+git branch -d dev(删除某一分支)
+在仓库上面新建两个分支
+
+在本地创建和远程对应的分支,(并且把远程分支里面的内容拉去到本地)
+
+git checkout -b lzl origin/lzl
+
+远程仓库所有分支要拉取本地统一合并,解决冲突然后上传!
+
+代码commit之后  git pull拉取远程仓库的代码看看有没有冲突,
+
+如果没有冲突 直接push ;
+
+有冲突的话,解决冲突  =>重新commit =>push
+
+
+
+git checkout -b dev        // 相当于git branch dev   git chekout dev
+git branch                 //命令查看当前分支
+修改文件
+git add a.php
+git commit -m 'branch test'
+git checkout master         //dev的工作完成，切换回master分支
+git merge dev               //把dev分支的工作成果合并到master分支上
+git branch -d dev           //删除dev分支
+
+
+
+
+
+
+
+

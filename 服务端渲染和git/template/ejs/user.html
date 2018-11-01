@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: black
+        }
+        body{
+            text-align: center;
+        }
+        img{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        .div1{
+            overflow: hidden;
+        }
+        .div1 img,.div2{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <a href="/index">
+        <div style="text-align: center"><%=data.loginname %></div>
+        <img src="<%=data.avatar_url%>" alt="">
+        <% data.recent_topics.forEach(item=> {%>
+            <% data.recent_topics.forEach(item=> {%>
+                <div class="div1">
+                    <img src="<%=item.author.avatar_url %>" alt="">
+                    <div class="div2">
+                        <p><%=item.title%></p>
+                        <p style="text-align:left"><%=item.last_reply_at %></p>
+                    </div>
+                </div>
+            <%}) %>
+        <%}) %>
+    </a>
+</body>
+</html>
